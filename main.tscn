@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene load_steps=29 format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://outlines_and_xrays.gd" id="2_dd2q1"]
 [ext_resource type="Texture2D" uid="uid://eto1ab5xksp" path="res://icon.svg" id="3_t04rb"]
 [ext_resource type="Shader" path="res://windwaker_clear.gdshader" id="5_m87fr"]
+[ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
 
 [sub_resource type="Gradient" id="Gradient_4064o"]
 colors = PackedColorArray(0.298039, 0.207843, 0.211765, 1, 0.741176, 0.756863, 0.705882, 1)
@@ -33,7 +34,7 @@ shading_mode = 0
 albedo_color = Color(0.8, 0, 1, 1)
 stencil_mode = 3
 stencil_flags = 3
-stencil_compare = 5
+stencil_compare = 4
 stencil_reference = 1
 metadata/_stencil_owned = true
 
@@ -56,7 +57,7 @@ grow = true
 grow_amount = 0.1
 stencil_mode = 3
 stencil_flags = 3
-stencil_compare = 5
+stencil_compare = 4
 stencil_reference = 1
 metadata/_stencil_owned = true
 
@@ -72,6 +73,7 @@ stencil_outline_thickness = 0.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwtkt"]
 render_priority = 2
 transparency = 1
+cull_mode = 1
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0.8, 0, 1, 1)
@@ -79,7 +81,7 @@ grow = true
 grow_amount = 0.1
 stencil_mode = 3
 stencil_flags = 3
-stencil_compare = 5
+stencil_compare = 4
 stencil_reference = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qskv"]
@@ -108,7 +110,7 @@ disable_ambient_light = true
 albedo_color = Color(2, 2, 1, 1)
 stencil_mode = 3
 stencil_flags = 1
-stencil_compare = 5
+stencil_compare = 4
 stencil_reference = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7q1ti"]
@@ -267,16 +269,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14685, 0.967781, -0.181237)
 material_override = SubResource("StandardMaterial3D_0nwx7")
 mesh = SubResource("CapsuleMesh_ppq8b")
 
+[node name="EnhancedXray" type="Node3D" parent="Demos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01344, 0, 0)
+
+[node name="BeetlebotSkin" parent="Demos/EnhancedXray" instance=ExtResource("7_0obcr")]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 4.0497, -0.408447, -0.906885)
+walk_dist = 8.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/EnhancedXray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188351, 0.0121982, -0.00174809)
+material_override = SubResource("StandardMaterial3D_ebb0o")
+size = Vector3(2.85727, 2.85244, 1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Demos/EnhancedXray"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0308275, 5.402, 0)
+light_energy = 5.0
+light_size = 1.0
+spot_range = 11.1362
+
+[node name="Label3D" type="Label3D" parent="Demos/EnhancedXray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07757, 0)
+billboard = 1
+text = "Enhanced Xray"
+
 [node name="CameraPositions" type="Node3D" parent="."]
 
-[node name="Node3D2" type="Node3D" parent="CameraPositions"]
+[node name="OutlinesAndXraysCam" type="Node3D" parent="CameraPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397708, 1.78392)
 
-[node name="Node3D" type="Node3D" parent="CameraPositions"]
+[node name="BeetleCam" type="Node3D" parent="CameraPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98589, 0.397708, 2.77242)
+
+[node name="WindWakerCam" type="Node3D" parent="CameraPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63654, 0.989329, 2.59033)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397708, 1.78392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98589, 0.397708, 2.77242)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

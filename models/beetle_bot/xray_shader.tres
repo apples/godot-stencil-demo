@@ -1,0 +1,16 @@
+[gd_resource type="Shader" format=3 uid="uid://b2hg1o2sld37q"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix,unshaded,cull_back,depth_test_disabled;
+stencil_mode read,compare_not_equal,1;
+uniform vec4 albedo : source_color;
+uniform float frensel_power;
+
+void fragment() {
+	vec2 base_uv = UV;
+	float fresnel = pow((1.0 - clamp(dot(normalize(NORMAL), normalize(VIEW)), 0.0, 1.0)), frensel_power);
+	ALBEDO = albedo.rgb;
+	ALPHA *= albedo.a * fresnel;
+}
+"
