@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene load_steps=32 format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
 
 [sub_resource type="Gradient" id="Gradient_4064o"]
-colors = PackedColorArray(0.298039, 0.207843, 0.211765, 1, 0.741176, 0.756863, 0.705882, 1)
+colors = PackedColorArray(0.380063, 0.270638, 0.275331, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wpq2f"]
 
@@ -145,6 +145,21 @@ albedo_texture = ExtResource("3_t04rb")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ppq8b"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n6qop"]
+sky_top_color = Color(0, 0.466667, 0.756863, 1)
+sky_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
+sky_curve = 0.27991
+ground_bottom_color = Color(0.67451, 0.862745, 1, 1)
+ground_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
+ground_curve = 0.101965
+
+[sub_resource type="Sky" id="Sky_411e3"]
+sky_material = SubResource("ProceduralSkyMaterial_n6qop")
+
+[sub_resource type="Environment" id="Environment_0eoc8"]
+background_mode = 2
+sky = SubResource("Sky_411e3")
+
 [node name="Main" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_mty62")
@@ -153,6 +168,7 @@ script = ExtResource("1_mty62")
 process_mode = 1
 
 [node name="OutlinesAndXrays" type="Node3D" parent="Demos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468452)
 script = ExtResource("2_dd2q1")
 
 [node name="XRay" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
@@ -208,7 +224,7 @@ omni_range = 3.86198
 omni_attenuation = 0.00656953
 
 [node name="WindWaker" type="Node3D" parent="Demos"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63612, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1257, -0.0124679, 0.0705559)
 script = ExtResource("1_oxoqy")
 
 [node name="Label3D" type="Label3D" parent="Demos/WindWaker"]
@@ -270,10 +286,10 @@ material_override = SubResource("StandardMaterial3D_0nwx7")
 mesh = SubResource("CapsuleMesh_ppq8b")
 
 [node name="EnhancedXray" type="Node3D" parent="Demos"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01344, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0925, 0, 0)
 
 [node name="BeetlebotSkin" parent="Demos/EnhancedXray" instance=ExtResource("7_0obcr")]
-transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 4.0497, -0.408447, -0.906885)
+transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 4.0497, -0.408447, -1.45937)
 walk_dist = 8.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Demos/EnhancedXray"]
@@ -298,10 +314,10 @@ text = "Enhanced Xray"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397708, 1.78392)
 
 [node name="BeetleCam" type="Node3D" parent="CameraPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98589, 0.397708, 2.77242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0649, 0.397708, 2.77242)
 
 [node name="WindWakerCam" type="Node3D" parent="CameraPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63654, 0.989329, 2.59033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1261, 0.989329, 2.59033)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98589, 0.397708, 2.77242)
@@ -327,3 +343,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Left/Right - Switch demo
 Spacebar - Pause"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0eoc8")
