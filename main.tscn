@@ -1,11 +1,11 @@
 [gd_scene load_steps=32 format=3 uid="uid://jt8pq117ee6j"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_mty62"]
-[ext_resource type="Script" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
-[ext_resource type="Shader" path="res://windwaker_mask.gdshader" id="2_1ce24"]
-[ext_resource type="Script" path="res://outlines_and_xrays.gd" id="2_dd2q1"]
+[ext_resource type="Script" uid="uid://do2n4bndyuucs" path="res://main.gd" id="1_mty62"]
+[ext_resource type="Script" uid="uid://d0tobr6muqwqo" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
+[ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_mask.gdshader" id="2_1ce24"]
+[ext_resource type="Script" uid="uid://gd6w0qenmmw3" path="res://outlines_and_xrays.gd" id="2_dd2q1"]
 [ext_resource type="Texture2D" uid="uid://eto1ab5xksp" path="res://icon.svg" id="3_t04rb"]
-[ext_resource type="Shader" path="res://windwaker_clear.gdshader" id="5_m87fr"]
+[ext_resource type="Shader" uid="uid://dq22fqywcoctv" path="res://windwaker_clear.gdshader" id="5_m87fr"]
 [ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
 
 [sub_resource type="Gradient" id="Gradient_4064o"]
