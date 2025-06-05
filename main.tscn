@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene load_steps=33 format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" uid="uid://do2n4bndyuucs" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" uid="uid://d0tobr6muqwqo" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
 [ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_mask.gdshader" id="2_1ce24"]
 [ext_resource type="Script" uid="uid://gd6w0qenmmw3" path="res://outlines_and_xrays.gd" id="2_dd2q1"]
 [ext_resource type="Texture2D" uid="uid://eto1ab5xksp" path="res://icon.svg" id="3_t04rb"]
-[ext_resource type="Shader" uid="uid://dq22fqywcoctv" path="res://windwaker_clear.gdshader" id="5_m87fr"]
 [ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
 
 [sub_resource type="Gradient" id="Gradient_4064o"]
@@ -34,8 +33,7 @@ shading_mode = 0
 albedo_color = Color(0.8, 0, 1, 1)
 stencil_mode = 3
 stencil_flags = 3
-stencil_compare = 4
-stencil_reference = 1
+stencil_compare = 5
 metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1orv"]
@@ -43,7 +41,7 @@ render_priority = 1
 next_pass = SubResource("StandardMaterial3D_fqa31")
 albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 2
-stencil_reference = 1
+stencil_flags = 2
 stencil_color = Color(0.8, 0, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a50aj"]
@@ -57,8 +55,7 @@ grow = true
 grow_amount = 0.1
 stencil_mode = 3
 stencil_flags = 3
-stencil_compare = 4
-stencil_reference = 1
+stencil_compare = 5
 metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yt5r"]
@@ -66,7 +63,28 @@ render_priority = 1
 next_pass = SubResource("StandardMaterial3D_po100")
 albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 1
-stencil_reference = 1
+stencil_flags = 2
+stencil_color = Color(0.8, 0, 1, 1)
+stencil_outline_thickness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.8, 0, 1, 1)
+grow = true
+grow_amount = 0.1
+stencil_mode = 3
+stencil_flags = 3
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+render_priority = 1
+next_pass = SubResource("StandardMaterial3D_5vw27")
+albedo_texture = ExtResource("3_t04rb")
+stencil_mode = 1
+stencil_flags = 2
 stencil_color = Color(0.8, 0, 1, 1)
 stencil_outline_thickness = 0.1
 
@@ -82,7 +100,6 @@ grow_amount = 0.1
 stencil_mode = 3
 stencil_flags = 3
 stencil_compare = 4
-stencil_reference = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qskv"]
 next_pass = SubResource("StandardMaterial3D_wwtkt")
@@ -90,26 +107,18 @@ albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 3
 stencil_flags = 6
 stencil_compare = 7
-stencil_reference = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtb2n"]
-render_priority = 3
-shader = ExtResource("5_m87fr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73wl1"]
 render_priority = 2
-next_pass = SubResource("ShaderMaterial_gtb2n")
 transparency = 1
-blend_mode = 3
 cull_mode = 1
 depth_draw_mode = 2
-depth_function = 1
+depth_test = 1
 shading_mode = 0
 specular_mode = 2
 disable_ambient_light = true
-albedo_color = Color(2, 2, 1, 1)
+albedo_color = Color(1, 1, 0.294118, 0.301961)
 stencil_mode = 3
-stencil_flags = 1
 stencil_compare = 4
 stencil_reference = 2
 
@@ -138,10 +147,11 @@ height = 0.1
 radial_segments = 8
 rings = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0nwx7"]
-shading_mode = 0
-albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
 albedo_texture = ExtResource("3_t04rb")
+stencil_flags = 2
+stencil_color = Color(0.8, 0, 1, 1)
+stencil_outline_thickness = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ppq8b"]
 
@@ -159,6 +169,12 @@ sky_material = SubResource("ProceduralSkyMaterial_n6qop")
 [sub_resource type="Environment" id="Environment_0eoc8"]
 background_mode = 2
 sky = SubResource("Sky_411e3")
+ssao_radius = 8.49
+ssao_intensity = 7.98
+ssao_power = 1.1768765
+ssao_detail = 1.77
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_272bh"]
 
 [node name="Main" type="Node3D"]
 process_mode = 3
@@ -195,6 +211,12 @@ skeleton = NodePath("../../..")
 [node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/Outline"]
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
 material_override = SubResource("StandardMaterial3D_7yt5r")
+mesh = SubResource("CapsuleMesh_a50aj")
+
+[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/Outline"]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -6.035691, 0.509487, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_kek77")
 mesh = SubResource("CapsuleMesh_a50aj")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Outline"]
@@ -281,8 +303,8 @@ material_override = SubResource("StandardMaterial3D_eqjxe")
 mesh = SubResource("SphereMesh_ib4d2")
 
 [node name="Character" type="MeshInstance3D" parent="Demos/WindWaker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14685, 0.967781, -0.181237)
-material_override = SubResource("StandardMaterial3D_0nwx7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89908123, 0.967781, -0.70842874)
+material_override = SubResource("StandardMaterial3D_272bh")
 mesh = SubResource("CapsuleMesh_ppq8b")
 
 [node name="EnhancedXray" type="Node3D" parent="Demos"]
@@ -346,3 +368,4 @@ Spacebar - Pause"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0eoc8")
+camera_attributes = SubResource("CameraAttributesPractical_272bh")

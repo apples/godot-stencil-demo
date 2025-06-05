@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bpjqcswabdtyb"]
 
-[ext_resource type="Script" path="res://models/beetle_bot/beetlebot_skin.gd" id="1_gujli"]
+[ext_resource type="Script" uid="uid://4ihrr6krmnu1" path="res://models/beetle_bot/beetlebot_skin.gd" id="1_gujli"]
 [ext_resource type="PackedScene" uid="uid://dbqoj8oam1dsg" path="res://models/beetle_bot/model/beetle_bot_fused.glb" id="1_r7amh"]
 [ext_resource type="Shader" uid="uid://b2hg1o2sld37q" path="res://models/beetle_bot/xray_shader.tres" id="3_mk501"]
 [ext_resource type="Material" uid="uid://dg5h8p8fu3mhh" path="res://models/beetle_bot/materials/beetlebot_eyes_mat.tres" id="3_nbf2s"]
@@ -18,7 +18,7 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 3
 stencil_flags = 2
-stencil_compare = 1
+stencil_compare = 0
 stencil_reference = 1
 
 [sub_resource type="Animation" id="Animation_j0ypl"]
@@ -433,8 +433,8 @@ tracks/53/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6t5q"]
 _data = {
-"RESET": SubResource("Animation_j0ypl"),
-"walk": SubResource("Animation_gd1qa")
+&"RESET": SubResource("Animation_j0ypl"),
+&"walk": SubResource("Animation_gd1qa")
 }
 
 [node name="BeetlebotSkin" type="Node3D"]
@@ -503,7 +503,7 @@ surface_material_override/2 = ExtResource("4_4158y")
 
 [node name="AnimationPlayer" parent="beetle_bot" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_w6t5q")
+&"": SubResource("AnimationLibrary_w6t5q")
 }
 
 [editable path="beetle_bot"]
