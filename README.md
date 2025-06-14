@@ -18,7 +18,7 @@ A slightly more interesting x-ray effect.
 
 ## Wind Waker Lights
 
-![wind waker lights](screenshots/ww_light.webm)
+[ww_light.webm](https://github.com/user-attachments/assets/2aaee72c-0656-4e96-89cf-cfdd70490389)
 
 An imitation of the simple lighting effects used in Wind Waker.
 
@@ -28,8 +28,7 @@ Requires a 3-pass material with a script to enforce a global ordering.
 
 ## Campfire
 
-![campfire](screenshots/campfire.webm)
-
+[campfire.webm](https://github.com/user-attachments/assets/2497dbac-1567-454f-9db6-702418571081)
 
 ![campfire breakdown](screenshots/campfire_breakdown.png)
 
