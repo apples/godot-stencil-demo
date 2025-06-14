@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://7lvck5nms6yf"]
+
+[sub_resource type="Gradient" id="Gradient_g1mw2"]
+offsets = PackedFloat32Array(0.12063492, 0.5650794, 0.784127, 1)
+colors = PackedColorArray(1, 0.16576622, 0.034132794, 1, 1, 0.7270613, 0.5611265, 1, 1, 0.80468714, 0.6340086, 1, 1, 0.4758308, 0.32524896, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1fiy0"]
+seed = 520
+fractal_octaves = 4
+fractal_gain = 0.885
+fractal_weighted_strength = 0.25
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lcyc"]
+seamless = true
+color_ramp = SubResource("Gradient_g1mw2")
+noise = SubResource("FastNoiseLite_1fiy0")
+
+[resource]
+resource_name = "FlameColorMaterial"
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_4lcyc")
+uv1_scale = Vector3(1, 0.04, 1)
+uv1_offset = Vector3(0, 4.29, 0)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2

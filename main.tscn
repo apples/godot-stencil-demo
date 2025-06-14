@@ -1,29 +1,31 @@
-[gd_scene load_steps=33 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene load_steps=27 format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" uid="uid://do2n4bndyuucs" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" uid="uid://d0tobr6muqwqo" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
-[ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_mask.gdshader" id="2_1ce24"]
 [ext_resource type="Script" uid="uid://gd6w0qenmmw3" path="res://outlines_and_xrays.gd" id="2_dd2q1"]
 [ext_resource type="Texture2D" uid="uid://eto1ab5xksp" path="res://icon.svg" id="3_t04rb"]
+[ext_resource type="Texture2D" uid="uid://djpepxoq6p5je" path="res://kenney_prototype-textures/PNG/Dark/texture_01.png" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bnuffxpqimdck" path="res://windwaker_light/windwaker_light.tscn" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
 
-[sub_resource type="Gradient" id="Gradient_4064o"]
-colors = PackedColorArray(0.380063, 0.270638, 0.275331, 1, 1, 1, 1, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n6qop"]
+sky_top_color = Color(0, 0.466667, 0.756863, 1)
+sky_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
+sky_curve = 0.27991
+ground_bottom_color = Color(0.67451, 0.862745, 1, 1)
+ground_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
+ground_curve = 0.101965
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wpq2f"]
+[sub_resource type="Sky" id="Sky_411e3"]
+sky_material = SubResource("ProceduralSkyMaterial_n6qop")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_73pse"]
-seamless = true
-color_ramp = SubResource("Gradient_4064o")
-noise = SubResource("FastNoiseLite_wpq2f")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebb0o"]
-shading_mode = 0
-albedo_color = Color(0.521569, 0.521569, 0.521569, 1)
-albedo_texture = SubResource("NoiseTexture2D_73pse")
-uv1_triplanar = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_pc24k"]
+[sub_resource type="Environment" id="Environment_0eoc8"]
+background_mode = 2
+sky = SubResource("Sky_411e3")
+ssao_radius = 8.49
+ssao_intensity = 7.98
+ssao_power = 1.1768765
+ssao_detail = 1.77
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqa31"]
 render_priority = -1
@@ -46,7 +48,7 @@ stencil_color = Color(0.8, 0, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a50aj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_po100"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
 render_priority = -1
 transparency = 1
 shading_mode = 0
@@ -60,28 +62,7 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yt5r"]
 render_priority = 1
-next_pass = SubResource("StandardMaterial3D_po100")
-albedo_texture = ExtResource("3_t04rb")
-stencil_mode = 1
-stencil_flags = 2
-stencil_color = Color(0.8, 0, 1, 1)
-stencil_outline_thickness = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
-render_priority = -1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.8, 0, 1, 1)
-grow = true
-grow_amount = 0.1
-stencil_mode = 3
-stencil_flags = 3
-stencil_compare = 5
-metadata/_stencil_owned = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
-render_priority = 1
-next_pass = SubResource("StandardMaterial3D_5vw27")
+next_pass = SubResource("StandardMaterial3D_kek77")
 albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 1
 stencil_flags = 2
@@ -108,44 +89,26 @@ stencil_mode = 3
 stencil_flags = 6
 stencil_compare = 7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73wl1"]
-render_priority = 2
-transparency = 1
-cull_mode = 1
-depth_draw_mode = 2
-depth_test = 1
-shading_mode = 0
-specular_mode = 2
-disable_ambient_light = true
-albedo_color = Color(1, 1, 0.294118, 0.301961)
-stencil_mode = 3
-stencil_compare = 4
-stencil_reference = 2
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kek77"]
+load_path = "res://.godot/imported/texture_01.png-02d5761e913636036863da9b5e68d1e1.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7q1ti"]
-render_priority = 1
-next_pass = SubResource("StandardMaterial3D_73wl1")
-shader = ExtResource("2_1ce24")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_texture = SubResource("CompressedTexture2D_kek77")
+uv1_triplanar = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_44fpo"]
-radius = 1.5
-height = 3.0
-radial_segments = 8
-rings = 4
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebb0o"]
+albedo_texture = ExtResource("5_5vw27")
+uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqjxe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
 render_priority = 2
 transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 0, 0.988235)
 
-[sub_resource type="SphereMesh" id="SphereMesh_ib4d2"]
+[sub_resource type="SphereMesh" id="SphereMesh_kek77"]
 radius = 0.05
 height = 0.1
-
-[sub_resource type="SphereMesh" id="SphereMesh_ra63y"]
-radial_segments = 8
-rings = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
 albedo_texture = ExtResource("3_t04rb")
@@ -155,30 +118,23 @@ stencil_outline_thickness = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ppq8b"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n6qop"]
-sky_top_color = Color(0, 0.466667, 0.756863, 1)
-sky_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
-sky_curve = 0.27991
-ground_bottom_color = Color(0.67451, 0.862745, 1, 1)
-ground_horizon_color = Color(0.729412, 0.843137, 0.933333, 1)
-ground_curve = 0.101965
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_texture = ExtResource("5_5vw27")
+uv1_triplanar = true
 
-[sub_resource type="Sky" id="Sky_411e3"]
-sky_material = SubResource("ProceduralSkyMaterial_n6qop")
-
-[sub_resource type="Environment" id="Environment_0eoc8"]
-background_mode = 2
-sky = SubResource("Sky_411e3")
-ssao_radius = 8.49
-ssao_intensity = 7.98
-ssao_power = 1.1768765
-ssao_detail = 1.77
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_272bh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(0, 0, 0, 0.34509805)
 
 [node name="Main" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_mty62")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0eoc8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9690157, -0.098885804, 0.2263407, 0, 0.91636276, 0.400349, -0.24699901, -0.3879445, 0.8879699, -0.0985508, 0, 4.7787642)
+visible = false
 
 [node name="Demos" type="Node3D" parent="."]
 process_mode = 1
@@ -187,63 +143,47 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468452)
 script = ExtResource("2_dd2q1")
 
-[node name="XRay" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
-material_override = SubResource("StandardMaterial3D_ebb0o")
-mesh = SubResource("SphereMesh_pc24k")
-skeleton = NodePath("../../..")
-
-[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/XRay"]
-transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
-material_override = SubResource("StandardMaterial3D_j1orv")
-mesh = SubResource("CapsuleMesh_a50aj")
-
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/XRay"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26723, 0)
-billboard = 1
-text = "XRay"
-
-[node name="Outline" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8.74228e-08)
-material_override = SubResource("StandardMaterial3D_ebb0o")
-mesh = SubResource("SphereMesh_pc24k")
-skeleton = NodePath("../../..")
-
-[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/Outline"]
-transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
-material_override = SubResource("StandardMaterial3D_7yt5r")
-mesh = SubResource("CapsuleMesh_a50aj")
-
-[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/Outline"]
-transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -6.035691, 0.509487, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_kek77")
-mesh = SubResource("CapsuleMesh_a50aj")
-
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Outline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.267, 0)
-billboard = 1
-text = "Outline"
-
-[node name="Custom" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8.74228e-08)
-material_override = SubResource("StandardMaterial3D_ebb0o")
-mesh = SubResource("SphereMesh_pc24k")
-skeleton = NodePath("../../..")
-
-[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays/Custom"]
-transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
-material_override = SubResource("StandardMaterial3D_3qskv")
-mesh = SubResource("CapsuleMesh_a50aj")
-
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Custom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.267, 0)
-billboard = 1
-text = "Custom"
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Demos/OutlinesAndXrays"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53679)
 omni_range = 3.86198
 omni_attenuation = 0.00656953
+
+[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
+material_override = SubResource("StandardMaterial3D_j1orv")
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule"]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.466471, 0)
+billboard = 1
+text = "XRay"
+
+[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -1, 0.509487, 5.9604645e-08)
+material_override = SubResource("StandardMaterial3D_7yt5r")
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule2"]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
+billboard = 1
+text = "Outline"
+
+[node name="Capsule3" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 1, 0.509487, -8.940697e-08)
+material_override = SubResource("StandardMaterial3D_3qskv")
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule3"]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
+billboard = 1
+text = "Custom"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/OutlinesAndXrays"]
+size = Vector3(3, 1, 1)
+material = SubResource("StandardMaterial3D_efxa6")
 
 [node name="WindWaker" type="Node3D" parent="Demos"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1257, -0.0124679, 0.0705559)
@@ -284,23 +224,21 @@ size = Vector3(0.659788, 0.558077, 3.1)
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.460049, 0.421409, 1.10076)
 size = Vector3(0.274604, 0.304101, 0.512664)
 
-[node name="Light" type="MeshInstance3D" parent="Demos/WindWaker"]
+[node name="Light" parent="Demos/WindWaker" instance=ExtResource("6_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.788592, 1, -1.0892)
-material_override = SubResource("ShaderMaterial_7q1ti")
-mesh = SubResource("SphereMesh_44fpo")
+radius = 1.5
 
-[node name="Center" type="MeshInstance3D" parent="Demos/WindWaker/Light"]
-material_override = SubResource("StandardMaterial3D_eqjxe")
-mesh = SubResource("SphereMesh_ib4d2")
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light"]
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("SphereMesh_kek77")
 
-[node name="Light2" type="MeshInstance3D" parent="Demos/WindWaker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13293, 0.223273, 0.524829)
-material_override = SubResource("ShaderMaterial_7q1ti")
-mesh = SubResource("SphereMesh_ra63y")
+[node name="Light5" parent="Demos/WindWaker" instance=ExtResource("6_4c57u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3934011, 0.223273, 0.5810965)
+radius = 1.5
 
-[node name="Center" type="MeshInstance3D" parent="Demos/WindWaker/Light2"]
-material_override = SubResource("StandardMaterial3D_eqjxe")
-mesh = SubResource("SphereMesh_ib4d2")
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light5"]
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("SphereMesh_kek77")
 
 [node name="Character" type="MeshInstance3D" parent="Demos/WindWaker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89908123, 0.967781, -0.70842874)
@@ -311,12 +249,11 @@ mesh = SubResource("CapsuleMesh_ppq8b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0925, 0, 0)
 
 [node name="BeetlebotSkin" parent="Demos/EnhancedXray" instance=ExtResource("7_0obcr")]
-transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 4.0497, -0.408447, -1.45937)
-walk_dist = 8.0
+transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 2.0740833, -0.408447, -1.45937)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Demos/EnhancedXray"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188351, 0.0121982, -0.00174809)
-material_override = SubResource("StandardMaterial3D_ebb0o")
+material_override = SubResource("StandardMaterial3D_4c57u")
 size = Vector3(2.85727, 2.85244, 1)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Demos/EnhancedXray"]
@@ -352,20 +289,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI"]
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -43.0
-offset_right = 296.0
-offset_bottom = -9.0
+offset_top = -108.0
+offset_right = 283.0
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
+
+[node name="Label" type="Label" parent="UI/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 24
 text = "Left/Right - Switch demo
-Spacebar - Pause"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0eoc8")
-camera_attributes = SubResource("CameraAttributesPractical_272bh")
+Spacebar - Pause
+C - Go to camp"

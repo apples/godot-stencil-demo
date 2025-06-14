@@ -10,14 +10,15 @@ var tween: Tween = null
 func _ready():
 	camera_3d.global_position = camera_positions.get_child(cam_index).global_position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_left"):
 		_change_cam(-1)
 	if Input.is_action_just_pressed("ui_right"):
 		_change_cam(+1)
 	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().paused = not get_tree().paused
+	if Input.is_action_just_pressed("camp"):
+		get_tree().change_scene_to_file("res://camp/camp.tscn")
 
 func _change_cam(offset: int):
 	cam_index = (cam_index + offset) % camera_positions.get_child_count()

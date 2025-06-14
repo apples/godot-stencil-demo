@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2g7ycdx8ygbj"]
+
+[resource]
+resource_name = "RocksMaterial"
+cull_mode = 2
+albedo_color = Color(0.43133983, 0.43134037, 0.43134025, 1)
+metallic_specular = 0.0

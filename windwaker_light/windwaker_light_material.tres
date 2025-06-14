@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://b6dbnskt7saxl"]
+
+[ext_resource type="Shader" uid="uid://dq22fqywcoctv" path="res://windwaker_light/windwaker_clear.gdshader" id="1_ribo2"]
+[ext_resource type="Shader" uid="uid://d181b84uk8exn" path="res://windwaker_light/windwaker_color.gdshader" id="2_prwmi"]
+[ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_light/windwaker_mask.gdshader" id="3_nf555"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stl7e"]
+render_priority = 0
+shader = ExtResource("1_ribo2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pggqb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_stl7e")
+shader = ExtResource("2_prwmi")
+shader_parameter/color = Color(1.5229772, 1.33528, 1.2003725, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_pggqb")
+shader = ExtResource("3_nf555")

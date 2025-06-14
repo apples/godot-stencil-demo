@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://sgmsgo10h2wg"]
+
+[ext_resource type="Script" uid="uid://dgx6pjl1e2tr0" path="res://camp/firefly.gd" id="1_fc1d2"]
+[ext_resource type="PackedScene" uid="uid://bnuffxpqimdck" path="res://windwaker_light/windwaker_light.tscn" id="1_ryrtv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc1d2"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.988235)
+
+[sub_resource type="SphereMesh" id="SphereMesh_elt3m"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Gradient" id="Gradient_fc1d2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_elt3m"]
+gradient = SubResource("Gradient_fc1d2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qoos8"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.81078887, 0.70248914, 0, 0.08627451)
+albedo_texture = SubResource("GradientTexture2D_elt3m")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_o7aac"]
+material = SubResource("StandardMaterial3D_qoos8")
+
+[node name="Firefly" type="Node3D"]
+script = ExtResource("1_fc1d2")
+
+[node name="WindwakerLight" parent="." instance=ExtResource("1_ryrtv")]
+
+[node name="Center" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fc1d2")
+mesh = SubResource("SphereMesh_elt3m")
+
+[node name="Glow" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_o7aac")

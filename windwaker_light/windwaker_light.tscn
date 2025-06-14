@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnuffxpqimdck"]
+
+[ext_resource type="Script" uid="uid://b1j7hvebe7ft4" path="res://windwaker_light/windwaker_light.gd" id="2_sdbqp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_44fpo"]
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+
+[node name="WindwakerLight" type="Node3D"]
+script = ExtResource("2_sdbqp")
+
+[node name="Light" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_44fpo")
