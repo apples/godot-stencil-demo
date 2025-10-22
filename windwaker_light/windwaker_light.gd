@@ -21,12 +21,11 @@ func _ready() -> void:
 		return
 	
 	var priority = next_priority + PRIORITY_OFFSET
-	next_priority = posmod(next_priority + 3, MAX_PRIORITY)
+	next_priority = posmod(next_priority + 2, MAX_PRIORITY)
 	
 	light.material_override = material.duplicate_deep()
 	light.material_override.render_priority = priority
 	light.material_override.next_pass.render_priority = priority + 1
-	light.material_override.next_pass.next_pass.render_priority = priority + 2
 
 func set_radius(v: float) -> void:
 	radius = v

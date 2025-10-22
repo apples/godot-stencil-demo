@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbu3prrmhhqsk"]
+
+[ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="1_tw1p2"]
+[ext_resource type="Shader" uid="uid://cfrfgbri4ldr8" path="res://stencil_shadow/shadow_volume_color.gdshader" id="2_podvf"]
+[ext_resource type="Shader" uid="uid://0sykc8ignx30" path="res://stencil_shadow/shadow_volume_front.gdshader" id="3_m0duj"]
+[ext_resource type="Shader" uid="uid://4m2imlseampp" path="res://stencil_shadow/shadow_volume_back.gdshader" id="4_xkotr"]
+[ext_resource type="Script" uid="uid://moolfrc6csf8" path="res://stencil_shadow/stencil_shadow.gd" id="5_wnaaj"]
+
+[sub_resource type="Skin" id="Skin_42pw4"]
+resource_name = "Skin"
+bind_count = 45
+bind/0/name = &"root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0)
+bind/1/name = &"middle_leg_IK.L"
+bind/1/bone = -1
+bind/1/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.093814224, -0.60331404, -0.10443449)
+bind/2/name = &"middle_hand_anchor.L"
+bind/2/bone = -1
+bind/2/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.09381429, -0.60331404, -0.1044345)
+bind/3/name = &"middle_thumb_1.L"
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.6049834, -0.115587845, -0.13070539)
+bind/4/name = &"middle_thumb_2.L"
+bind/4/bone = -1
+bind/4/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.6049834, -0.115587845, -0.056923162)
+bind/5/name = &"middle_knee.L"
+bind/5/bone = -1
+bind/5/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.52331406, -0.30892393, -0.09381425)
+bind/6/name = &"rear_leg_IK.L"
+bind/6/bone = -1
+bind/6/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.20000005, -0.5452744, -0.10443449)
+bind/7/name = &"rear_hand_anchor.L"
+bind/7/bone = -1
+bind/7/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.20000006, -0.5452744, -0.1044345)
+bind/8/name = &"rear_thumb_1.L"
+bind/8/bone = -1
+bind/8/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.5469437, -0.115587845, 0.16310897)
+bind/9/name = &"rear_thumb_2.L"
+bind/9/bone = -1
+bind/9/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.5469437, -0.115587845, 0.2368912)
+bind/10/name = &"rear_knee.L"
+bind/10/bone = -1
+bind/10/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.4652744, -0.30892393, 0.20000003)
+bind/11/name = &"front_leg_IK.L"
+bind/11/bone = -1
+bind/11/pose = Transform3D(2.9802317e-07, 3.7252885e-08, 1, 1, -3.72529e-08, -3.5762787e-07, 3.7252885e-08, 1, -3.72529e-08, -0.26531112, -0.555427, -0.10443468)
+bind/12/name = &"front_hand_anchor.L"
+bind/12/bone = -1
+bind/12/pose = Transform3D(-4.594927e-07, -5.7436626e-08, 1, 1, 5.7436583e-08, 3.99888e-07, -5.7436612e-08, 1, 5.7436605e-08, -0.26531067, -0.55542725, -0.10443465)
+bind/13/name = &"front_thumb_1.L"
+bind/13/bone = -1
+bind/13/pose = Transform3D(1, 7.766034e-09, -5.1121816e-08, -7.766042e-09, 1.0000001, 5.7436626e-08, -8.482883e-09, -7.76607e-09, 1, -0.5616866, -0.11516963, -0.30081877)
+bind/14/name = &"front_thumb_2.L"
+bind/14/bone = -1
+bind/14/pose = Transform3D(1, 7.766034e-09, -5.1121816e-08, -7.766042e-09, 1.0000001, 5.7436626e-08, -8.482883e-09, -7.76607e-09, 1, -0.5616866, -0.11516963, -0.22980323)
+bind/15/name = &"front_knee.L"
+bind/15/bone = -1
+bind/15/pose = Transform3D(1, -3.72529e-08, -1.2566778e-07, 3.7252896e-08, 1, -1.1287752e-15, 6.606308e-08, -2.4610413e-15, 1, -0.4801567, -0.30892393, -0.2653111)
+bind/16/name = &"body"
+bind/16/bone = -1
+bind/16/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0.02000001, -0.35000002)
+bind/17/name = &"middle_upper_leg.L"
+bind/17/bone = -1
+bind/17/pose = Transform3D(0.0007859763, -0.016171917, 0.9998689, 0.9998689, 0.016182521, -0.0005242716, -0.016171921, 0.9997383, 0.016182523, -0.09214944, -0.047961444, -0.10517611)
+bind/18/name = &"middle_lower_leg.L"
+bind/18/bone = -1
+bind/18/pose = Transform3D(-0.00026243713, 0.016014675, 0.9998718, 0.9998718, -0.016008418, 0.0005188072, 0.016014675, 0.99974364, -0.016008414, -0.09531641, -0.32157752, -0.11256779)
+bind/19/name = &"rear_upper_leg.L"
+bind/19/bone = -1
+bind/19/pose = Transform3D(0.00086200493, -0.01732218, 0.9998496, 0.9998496, 0.017334513, -0.0005616034, -0.017322177, 0.99969965, 0.017334519, 0.20175834, -0.025897402, -0.100520864)
+bind/20/name = &"rear_lower_leg.L"
+bind/20/bone = -1
+bind/20/pose = Transform3D(-0.00026141916, 0.017129712, 0.9998534, 0.9998533, -0.017122712, 0.0005548541, 0.017129704, 0.9997067, -0.017122721, 0.19832434, -0.2810063, -0.117168814)
+bind/21/name = &"front_upper_leg.L"
+bind/21/bone = -1
+bind/21/pose = Transform3D(0.00082874135, -0.01682494, 0.99985814, 0.99985814, 0.016836548, -0.0005454079, -0.016824985, 0.99971664, 0.016836505, -0.26353619, -0.025588578, -0.10846838)
+bind/22/name = &"front_lower_leg.L"
+bind/22/bone = -1
+bind/22/pose = Transform3D(-0.00026128895, 0.016906213, 0.99985707, 0.99985725, -0.016899383, 0.0005470535, 0.016906219, 0.9997143, -0.016899379, -0.2668935, -0.28846592, -0.10931141)
+bind/23/name = &"head"
+bind/23/bone = -1
+bind/23/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 5.2978834e-18, -0.28171578, -0.37385955)
+bind/24/name = &"middle_upper_leg.R"
+bind/24/bone = -1
+bind/24/pose = Transform3D(0.0007859763, 0.016171917, -0.9998689, -0.9998689, 0.016182521, -0.0005242716, 0.016171921, 0.9997383, 0.016182523, 0.09214944, -0.047961444, -0.10517611)
+bind/25/name = &"middle_lower_leg.R"
+bind/25/bone = -1
+bind/25/pose = Transform3D(-0.00026243713, -0.016014675, -0.9998718, -0.9998718, -0.016008418, 0.0005188072, -0.016014675, 0.99974364, -0.016008414, 0.09531641, -0.32157752, -0.11256779)
+bind/26/name = &"rear_upper_leg.R"
+bind/26/bone = -1
+bind/26/pose = Transform3D(0.00086200493, 0.01732218, -0.9998496, -0.9998496, 0.017334513, -0.0005616034, 0.017322177, 0.99969965, 0.017334519, -0.20175834, -0.025897402, -0.100520864)
+bind/27/name = &"rear_lower_leg.R"
+bind/27/bone = -1
+bind/27/pose = Transform3D(-0.00026141916, -0.017129712, -0.9998534, -0.9998533, -0.017122712, 0.0005548541, -0.017129704, 0.9997067, -0.017122721, -0.19832434, -0.2810063, -0.117168814)
+bind/28/name = &"front_upper_leg.R"
+bind/28/bone = -1
+bind/28/pose = Transform3D(0.00082874135, 0.01682494, -0.99985814, -0.99985814, 0.016836548, -0.0005454079, 0.016824985, 0.99971664, 0.016836505, 0.26353619, -0.025588578, -0.10846838)
+bind/29/name = &"front_lower_leg.R"
+bind/29/bone = -1
+bind/29/pose = Transform3D(-0.00026128895, -0.016906213, -0.99985707, -0.99985725, -0.016899383, 0.0005470535, -0.016906219, 0.9997143, -0.016899379, 0.2668935, -0.28846592, -0.10931141)
+bind/30/name = &"middle_leg_IK.R"
+bind/30/bone = -1
+bind/30/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, 0.093814224, -0.60331404, -0.10443449)
+bind/31/name = &"middle_hand_anchor.R"
+bind/31/bone = -1
+bind/31/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, 0.09381429, -0.60331404, -0.1044345)
+bind/32/name = &"middle_thumb_1.R"
+bind/32/bone = -1
+bind/32/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.6049834, -0.115587845, -0.13070539)
+bind/33/name = &"middle_thumb_2.R"
+bind/33/bone = -1
+bind/33/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.6049834, -0.115587845, -0.056923162)
+bind/34/name = &"middle_knee.R"
+bind/34/bone = -1
+bind/34/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.52331406, -0.30892393, -0.09381425)
+bind/35/name = &"rear_leg_IK.R"
+bind/35/bone = -1
+bind/35/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, -0.20000005, -0.5452744, -0.10443449)
+bind/36/name = &"rear_hand_anchor.R"
+bind/36/bone = -1
+bind/36/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, -0.20000006, -0.5452744, -0.1044345)
+bind/37/name = &"rear_thumb_1.R"
+bind/37/bone = -1
+bind/37/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.5469437, -0.115587845, 0.16310897)
+bind/38/name = &"rear_thumb_2.R"
+bind/38/bone = -1
+bind/38/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.5469437, -0.115587845, 0.2368912)
+bind/39/name = &"rear_knee.R"
+bind/39/bone = -1
+bind/39/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.4652744, -0.30892393, 0.20000003)
+bind/40/name = &"front_leg_IK.R"
+bind/40/bone = -1
+bind/40/pose = Transform3D(2.9802317e-07, -3.7252885e-08, -1, -1, -3.72529e-08, -3.5762787e-07, -3.7252885e-08, 1, -3.72529e-08, 0.26531112, -0.555427, -0.10443468)
+bind/41/name = &"front_hand_anchor.R"
+bind/41/bone = -1
+bind/41/pose = Transform3D(-4.594927e-07, 5.7436626e-08, -1, -1, 5.7436583e-08, 3.99888e-07, 5.7436612e-08, 1, 5.7436605e-08, 0.26531067, -0.55542725, -0.10443465)
+bind/42/name = &"front_thumb_1.R"
+bind/42/bone = -1
+bind/42/pose = Transform3D(1, -7.766034e-09, 5.1121816e-08, 7.766042e-09, 1.0000001, 5.7436626e-08, 8.482883e-09, -7.76607e-09, 1, 0.5616866, -0.11516963, -0.30081877)
+bind/43/name = &"front_thumb_2.R"
+bind/43/bone = -1
+bind/43/pose = Transform3D(1, -7.766034e-09, 5.1121816e-08, 7.766042e-09, 1.0000001, 5.7436626e-08, 8.482883e-09, -7.76607e-09, 1, 0.5616866, -0.11516963, -0.22980323)
+bind/44/name = &"front_knee.R"
+bind/44/bone = -1
+bind/44/pose = Transform3D(1, 3.72529e-08, 1.2566778e-07, -3.7252896e-08, 1, -1.1287752e-15, -6.606308e-08, -2.4610413e-15, 1, 0.4801567, -0.30892393, -0.2653111)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_podvf"]
+render_priority = 2
+shader = ExtResource("2_podvf")
+shader_parameter/light_dir_world = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0duj"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_podvf")
+shader = ExtResource("3_m0duj")
+shader_parameter/light_dir_world = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkotr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_m0duj")
+shader = ExtResource("4_xkotr")
+shader_parameter/light_dir_world = Vector3(0, 0, 0)
+
+[node name="BeetlebotSkin" unique_id=1229489347 instance=ExtResource("1_tw1p2")]
+
+[node name="Beetle" parent="beetle_bot/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="StencilShadow" type="MeshInstance3D" parent="beetle_bot/Armature/Skeleton3D/Beetle" index="0" unique_id=1428055071]
+cast_shadow = 0
+extra_cull_margin = 50.0
+skin = SubResource("Skin_42pw4")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_xkotr")
+script = ExtResource("5_wnaaj")
+
+[editable path="beetle_bot"]

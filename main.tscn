@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene load_steps=28 format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" uid="uid://do2n4bndyuucs" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" uid="uid://d0tobr6muqwqo" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://djpepxoq6p5je" path="res://kenney_prototype-textures/PNG/Dark/texture_01.png" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bnuffxpqimdck" path="res://windwaker_light/windwaker_light.tscn" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://models/beetle_bot/beetlebot_skin.tscn" id="7_0obcr"]
+[ext_resource type="PackedScene" uid="uid://dnr2mnp3j3y6a" path="res://stencil_shadow/demo.tscn" id="8_5vw27"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n6qop"]
 sky_top_color = Color(0, 0.466667, 0.756863, 1)
@@ -27,20 +28,20 @@ ssao_intensity = 7.98
 ssao_power = 1.1768765
 ssao_detail = 1.77
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqa31"]
-render_priority = -1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+render_priority = 2
 transparency = 1
 no_depth_test = true
 shading_mode = 0
 albedo_color = Color(0.8, 0, 1, 1)
 stencil_mode = 3
-stencil_flags = 3
+stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1orv"]
 render_priority = 1
-next_pass = SubResource("StandardMaterial3D_fqa31")
+next_pass = SubResource("StandardMaterial3D_kek77")
 albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 2
 stencil_flags = 2
@@ -48,21 +49,21 @@ stencil_color = Color(0.8, 0, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a50aj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
-render_priority = -1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+render_priority = 2
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.8, 0, 1, 1)
 grow = true
 grow_amount = 0.1
 stencil_mode = 3
-stencil_flags = 3
+stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yt5r"]
 render_priority = 1
-next_pass = SubResource("StandardMaterial3D_kek77")
+next_pass = SubResource("StandardMaterial3D_dg77c")
 albedo_texture = ExtResource("3_t04rb")
 stencil_mode = 1
 stencil_flags = 2
@@ -70,7 +71,7 @@ stencil_color = Color(0.8, 0, 1, 1)
 stencil_outline_thickness = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwtkt"]
-render_priority = 2
+render_priority = 1
 transparency = 1
 cull_mode = 1
 no_depth_test = true
@@ -79,7 +80,7 @@ albedo_color = Color(0.8, 0, 1, 1)
 grow = true
 grow_amount = 0.1
 stencil_mode = 3
-stencil_flags = 3
+stencil_flags = 1
 stencil_compare = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qskv"]
@@ -125,163 +126,238 @@ uv1_triplanar = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0, 0, 0, 0.34509805)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1431921057]
 process_mode = 3
 script = ExtResource("1_mty62")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1952827703]
 environment = SubResource("Environment_0eoc8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1622474727]
 transform = Transform3D(0.9690157, -0.098885804, 0.2263407, 0, 0.91636276, 0.400349, -0.24699901, -0.3879445, 0.8879699, -0.0985508, 0, 4.7787642)
-visible = false
 
-[node name="Demos" type="Node3D" parent="."]
+[node name="Demos" type="Node3D" parent="." unique_id=1161813117]
 process_mode = 1
 
-[node name="OutlinesAndXrays" type="Node3D" parent="Demos"]
+[node name="OutlinesAndXrays" type="Node3D" parent="Demos" unique_id=284742286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.468452)
 script = ExtResource("2_dd2q1")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Demos/OutlinesAndXrays"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Demos/OutlinesAndXrays" unique_id=1363496045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53679)
 omni_range = 3.86198
 omni_attenuation = 0.00656953
 
-[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays" unique_id=749840237]
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
 material_override = SubResource("StandardMaterial3D_j1orv")
 mesh = SubResource("CapsuleMesh_a50aj")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule"]
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule" unique_id=619635984]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.466471, 0)
 billboard = 1
 text = "XRay"
 
-[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays" unique_id=233116998]
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -1, 0.509487, 5.9604645e-08)
 material_override = SubResource("StandardMaterial3D_7yt5r")
 mesh = SubResource("CapsuleMesh_a50aj")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule2"]
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule2" unique_id=425240650]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
 billboard = 1
 text = "Outline"
 
-[node name="Capsule3" type="MeshInstance3D" parent="Demos/OutlinesAndXrays"]
+[node name="Capsule3" type="MeshInstance3D" parent="Demos/OutlinesAndXrays" unique_id=1964768379]
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 1, 0.509487, -8.940697e-08)
 material_override = SubResource("StandardMaterial3D_3qskv")
 mesh = SubResource("CapsuleMesh_a50aj")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule3"]
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule3" unique_id=457147269]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
 billboard = 1
 text = "Custom"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Demos/OutlinesAndXrays"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/OutlinesAndXrays" unique_id=1811576086]
 size = Vector3(3, 1, 1)
 material = SubResource("StandardMaterial3D_efxa6")
 
-[node name="WindWaker" type="Node3D" parent="Demos"]
+[node name="OutlinesAndXrays2" type="Node3D" parent="Demos" unique_id=205049118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.976511, -0.6780925)
+script = ExtResource("2_dd2q1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Demos/OutlinesAndXrays2" unique_id=1789775079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53679)
+omni_range = 3.86198
+omni_attenuation = 0.00656953
+
+[node name="Capsule" type="MeshInstance3D" parent="Demos/OutlinesAndXrays2" unique_id=1848175959]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
+material_override = SubResource("StandardMaterial3D_j1orv")
+transparency = 0.5
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule" unique_id=1552965129]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.466471, 0)
+billboard = 1
+text = "XRay"
+
+[node name="Capsule2" type="MeshInstance3D" parent="Demos/OutlinesAndXrays2" unique_id=250863264]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -1, 0.509487, 5.9604645e-08)
+material_override = SubResource("StandardMaterial3D_7yt5r")
+transparency = 0.5
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule2" unique_id=980374357]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
+billboard = 1
+text = "Outline"
+
+[node name="Capsule3" type="MeshInstance3D" parent="Demos/OutlinesAndXrays2" unique_id=134272819]
+transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 1, 0.509487, -8.940697e-08)
+material_override = SubResource("StandardMaterial3D_3qskv")
+transparency = 0.5
+mesh = SubResource("CapsuleMesh_a50aj")
+skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule3" unique_id=364984637]
+transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
+billboard = 1
+text = "Custom"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/OutlinesAndXrays2" unique_id=703613302]
+size = Vector3(3, 1, 1)
+material = SubResource("StandardMaterial3D_efxa6")
+
+[node name="WindWaker" type="Node3D" parent="Demos" unique_id=1907276239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1257, -0.0124679, 0.0705559)
 script = ExtResource("1_oxoqy")
 
-[node name="Label3D" type="Label3D" parent="Demos/WindWaker"]
+[node name="Label3D" type="Label3D" parent="Demos/WindWaker" unique_id=1139967960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73462, 0)
 billboard = 1
 text = "Wind Waker Light"
 
-[node name="Room" type="CSGCombiner3D" parent="Demos/WindWaker"]
+[node name="Room" type="CSGCombiner3D" parent="Demos/WindWaker" unique_id=1499248222]
 material_override = SubResource("StandardMaterial3D_ebb0o")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=1897699774]
 size = Vector3(3, 0.1, 3)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=1992765583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98996, 0)
 size = Vector3(3, 0.1, 3)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=1434962448]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 1.5, -1.5)
 size = Vector3(3, 0.1, 3.1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=982835865]
 transform = Transform3D(-4.37114e-08, 1, 0, 0, 0, 1, 1, 4.37114e-08, 0, -1.46977, 1.5, -0.000430226)
 size = Vector3(3, 0.1, 3.1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=216923396]
 transform = Transform3D(-4.37114e-08, 1, 0, 0, 0, 1, 1, 4.37114e-08, 0, 1.4712, 1.5, -0.000430226)
 size = Vector3(3, 0.1, 3.1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=1167000370]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.950573, 1.5, 0.939381)
 size = Vector3(0.659788, 0.558077, 3.1)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Demos/WindWaker/Room"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Demos/WindWaker/Room" unique_id=984172604]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.460049, 0.421409, 1.10076)
 size = Vector3(0.274604, 0.304101, 0.512664)
 
-[node name="Light" parent="Demos/WindWaker" instance=ExtResource("6_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.788592, 1, -1.0892)
+[node name="Light" parent="Demos/WindWaker" unique_id=882747799 instance=ExtResource("6_4c57u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9570465, 1, -0.8508556)
 radius = 1.5
 
-[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light"]
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light" unique_id=1893276625]
 material_override = SubResource("StandardMaterial3D_5vw27")
 mesh = SubResource("SphereMesh_kek77")
 
-[node name="Light5" parent="Demos/WindWaker" instance=ExtResource("6_4c57u")]
+[node name="Light2" parent="Demos/WindWaker" unique_id=1200691961 instance=ExtResource("6_4c57u")]
+transform = Transform3D(0.785, 0, 0, 0, 0.785, 0, 0, 0, 0.785, -0.9570465, 1, -0.8508556)
+radius = 1.5
+
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light2" unique_id=362210210]
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("SphereMesh_kek77")
+
+[node name="Light3" parent="Demos/WindWaker" unique_id=1802655020 instance=ExtResource("6_4c57u")]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, -0.9570465, 1, -0.8508556)
+radius = 1.5
+
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light3" unique_id=1102685482]
+material_override = SubResource("StandardMaterial3D_5vw27")
+mesh = SubResource("SphereMesh_kek77")
+
+[node name="Light5" parent="Demos/WindWaker" unique_id=2057900954 instance=ExtResource("6_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3934011, 0.223273, 0.5810965)
 radius = 1.5
 
-[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light5"]
+[node name="Center2" type="MeshInstance3D" parent="Demos/WindWaker/Light5" unique_id=1298552803]
 material_override = SubResource("StandardMaterial3D_5vw27")
 mesh = SubResource("SphereMesh_kek77")
 
-[node name="Character" type="MeshInstance3D" parent="Demos/WindWaker"]
+[node name="Character" type="MeshInstance3D" parent="Demos/WindWaker" unique_id=1945084404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89908123, 0.967781, -0.70842874)
 material_override = SubResource("StandardMaterial3D_272bh")
 mesh = SubResource("CapsuleMesh_ppq8b")
 
-[node name="EnhancedXray" type="Node3D" parent="Demos"]
+[node name="EnhancedXray" type="Node3D" parent="Demos" unique_id=1378590288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0925, 0, 0)
 
-[node name="BeetlebotSkin" parent="Demos/EnhancedXray" instance=ExtResource("7_0obcr")]
+[node name="BeetlebotSkin" parent="Demos/EnhancedXray" unique_id=98818305 instance=ExtResource("7_0obcr")]
 transform = Transform3D(-4.37114e-08, 0, -1, -0.245324, 0.969441, 1.07235e-08, 0.969441, 0.245324, -4.23756e-08, 2.0740833, -0.408447, -1.45937)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Demos/EnhancedXray"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Demos/EnhancedXray" unique_id=519079308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188351, 0.0121982, -0.00174809)
 material_override = SubResource("StandardMaterial3D_4c57u")
 size = Vector3(2.85727, 2.85244, 1)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Demos/EnhancedXray"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Demos/EnhancedXray" unique_id=1116889308]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0308275, 5.402, 0)
 light_energy = 5.0
 light_size = 1.0
 spot_range = 11.1362
 
-[node name="Label3D" type="Label3D" parent="Demos/EnhancedXray"]
+[node name="Label3D" type="Label3D" parent="Demos/EnhancedXray" unique_id=1433216167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07757, 0)
 billboard = 1
 text = "Enhanced Xray"
 
-[node name="CameraPositions" type="Node3D" parent="."]
+[node name="StencilShadowDemo" parent="Demos" unique_id=147511768 instance=ExtResource("8_5vw27")]
+transform = Transform3D(-4.3711392e-08, -3.6966572e-16, 1, 0.72741365, 0.6861993, 3.1796265e-08, -0.6861993, 0.72741365, -2.9994737e-08, -21.301756, 1.4409914, -0.9198694)
 
-[node name="OutlinesAndXraysCam" type="Node3D" parent="CameraPositions"]
+[node name="Label3D" type="Label3D" parent="Demos/StencilShadowDemo" unique_id=1044718570]
+transform = Transform3D(-4.371141e-08, 0.7274136, -0.68619925, 3.037623e-15, 0.68619925, 0.7274136, 1, 3.1796233e-08, -2.9994723e-08, 0.07720685, 1.3374078, 0.12283516)
+billboard = 1
+text = "Shadow Volumes"
+
+[node name="CameraPositions" type="Node3D" parent="." unique_id=1050751460]
+
+[node name="OutlinesAndXraysCam" type="Node3D" parent="CameraPositions" unique_id=866009776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397708, 1.78392)
 
-[node name="BeetleCam" type="Node3D" parent="CameraPositions"]
+[node name="BeetleCam" type="Node3D" parent="CameraPositions" unique_id=1153257387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0649, 0.397708, 2.77242)
 
-[node name="WindWakerCam" type="Node3D" parent="CameraPositions"]
+[node name="ShadowCam" type="Node3D" parent="CameraPositions" unique_id=1786970704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.126099, 0.989329, 2.59033)
+
+[node name="WindWakerCam" type="Node3D" parent="CameraPositions" unique_id=113648010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1261, 0.989329, 2.59033)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=194436821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.98589, 0.397708, 2.77242)
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=442460338]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,7 +365,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI"]
+[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=933016615]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -299,7 +375,7 @@ offset_right = 283.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
 
-[node name="Label" type="Label" parent="UI/PanelContainer"]
+[node name="Label" type="Label" parent="UI/PanelContainer" unique_id=757589626]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2

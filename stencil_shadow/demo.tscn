@@ -1,0 +1,324 @@
+[gd_scene load_steps=15 format=3 uid="uid://dnr2mnp3j3y6a"]
+
+[ext_resource type="Script" uid="uid://dx5xpsm4w6l7c" path="res://stencil_shadow/demo.gd" id="1_63n0v"]
+[ext_resource type="PackedScene" uid="uid://dbu3prrmhhqsk" path="res://stencil_shadow/beetlebot_skin_shadowed.tscn" id="2_itwmi"]
+[ext_resource type="Shader" uid="uid://cfrfgbri4ldr8" path="res://stencil_shadow/shadow_volume_color.gdshader" id="2_sdheq"]
+[ext_resource type="Shader" uid="uid://0sykc8ignx30" path="res://stencil_shadow/shadow_volume_front.gdshader" id="3_63n0v"]
+[ext_resource type="Shader" uid="uid://4m2imlseampp" path="res://stencil_shadow/shadow_volume_back.gdshader" id="4_xucdu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kek77"]
+resource_name = "_albedo"
+load_path = "res://.godot/imported/texture_01.png-02d5761e913636036863da9b5e68d1e1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doufl"]
+albedo_texture = SubResource("CompressedTexture2D_kek77")
+uv1_triplanar = true
+
+[sub_resource type="Skin" id="Skin_42pw4"]
+resource_name = "Skin"
+bind_count = 45
+bind/0/name = &"root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0)
+bind/1/name = &"middle_leg_IK.L"
+bind/1/bone = -1
+bind/1/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.093814224, -0.60331404, -0.10443449)
+bind/2/name = &"middle_hand_anchor.L"
+bind/2/bone = -1
+bind/2/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.09381429, -0.60331404, -0.1044345)
+bind/3/name = &"middle_thumb_1.L"
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.6049834, -0.115587845, -0.13070539)
+bind/4/name = &"middle_thumb_2.L"
+bind/4/bone = -1
+bind/4/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.6049834, -0.115587845, -0.056923162)
+bind/5/name = &"middle_knee.L"
+bind/5/bone = -1
+bind/5/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.52331406, -0.30892393, -0.09381425)
+bind/6/name = &"rear_leg_IK.L"
+bind/6/bone = -1
+bind/6/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.20000005, -0.5452744, -0.10443449)
+bind/7/name = &"rear_hand_anchor.L"
+bind/7/bone = -1
+bind/7/pose = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0.20000006, -0.5452744, -0.1044345)
+bind/8/name = &"rear_thumb_1.L"
+bind/8/bone = -1
+bind/8/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.5469437, -0.115587845, 0.16310897)
+bind/9/name = &"rear_thumb_2.L"
+bind/9/bone = -1
+bind/9/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.5469437, -0.115587845, 0.2368912)
+bind/10/name = &"rear_knee.L"
+bind/10/bone = -1
+bind/10/pose = Transform3D(1, 0, -4.371139e-08, 0, 1.0000001, 0, 4.371139e-08, 0, 1, -0.4652744, -0.30892393, 0.20000003)
+bind/11/name = &"front_leg_IK.L"
+bind/11/bone = -1
+bind/11/pose = Transform3D(2.9802317e-07, 3.7252885e-08, 1, 1, -3.72529e-08, -3.5762787e-07, 3.7252885e-08, 1, -3.72529e-08, -0.26531112, -0.555427, -0.10443468)
+bind/12/name = &"front_hand_anchor.L"
+bind/12/bone = -1
+bind/12/pose = Transform3D(-4.594927e-07, -5.7436626e-08, 1, 1, 5.7436583e-08, 3.99888e-07, -5.7436612e-08, 1, 5.7436605e-08, -0.26531067, -0.55542725, -0.10443465)
+bind/13/name = &"front_thumb_1.L"
+bind/13/bone = -1
+bind/13/pose = Transform3D(1, 7.766034e-09, -5.1121816e-08, -7.766042e-09, 1.0000001, 5.7436626e-08, -8.482883e-09, -7.76607e-09, 1, -0.5616866, -0.11516963, -0.30081877)
+bind/14/name = &"front_thumb_2.L"
+bind/14/bone = -1
+bind/14/pose = Transform3D(1, 7.766034e-09, -5.1121816e-08, -7.766042e-09, 1.0000001, 5.7436626e-08, -8.482883e-09, -7.76607e-09, 1, -0.5616866, -0.11516963, -0.22980323)
+bind/15/name = &"front_knee.L"
+bind/15/bone = -1
+bind/15/pose = Transform3D(1, -3.72529e-08, -1.2566778e-07, 3.7252896e-08, 1, -1.1287752e-15, 6.606308e-08, -2.4610413e-15, 1, -0.4801567, -0.30892393, -0.2653111)
+bind/16/name = &"body"
+bind/16/bone = -1
+bind/16/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0.02000001, -0.35000002)
+bind/17/name = &"middle_upper_leg.L"
+bind/17/bone = -1
+bind/17/pose = Transform3D(0.0007859763, -0.016171917, 0.9998689, 0.9998689, 0.016182521, -0.0005242716, -0.016171921, 0.9997383, 0.016182523, -0.09214944, -0.047961444, -0.10517611)
+bind/18/name = &"middle_lower_leg.L"
+bind/18/bone = -1
+bind/18/pose = Transform3D(-0.00026243713, 0.016014675, 0.9998718, 0.9998718, -0.016008418, 0.0005188072, 0.016014675, 0.99974364, -0.016008414, -0.09531641, -0.32157752, -0.11256779)
+bind/19/name = &"rear_upper_leg.L"
+bind/19/bone = -1
+bind/19/pose = Transform3D(0.00086200493, -0.01732218, 0.9998496, 0.9998496, 0.017334513, -0.0005616034, -0.017322177, 0.99969965, 0.017334519, 0.20175834, -0.025897402, -0.100520864)
+bind/20/name = &"rear_lower_leg.L"
+bind/20/bone = -1
+bind/20/pose = Transform3D(-0.00026141916, 0.017129712, 0.9998534, 0.9998533, -0.017122712, 0.0005548541, 0.017129704, 0.9997067, -0.017122721, 0.19832434, -0.2810063, -0.117168814)
+bind/21/name = &"front_upper_leg.L"
+bind/21/bone = -1
+bind/21/pose = Transform3D(0.00082874135, -0.01682494, 0.99985814, 0.99985814, 0.016836548, -0.0005454079, -0.016824985, 0.99971664, 0.016836505, -0.26353619, -0.025588578, -0.10846838)
+bind/22/name = &"front_lower_leg.L"
+bind/22/bone = -1
+bind/22/pose = Transform3D(-0.00026128895, 0.016906213, 0.99985707, 0.99985725, -0.016899383, 0.0005470535, 0.016906219, 0.9997143, -0.016899379, -0.2668935, -0.28846592, -0.10931141)
+bind/23/name = &"head"
+bind/23/bone = -1
+bind/23/pose = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 5.2978834e-18, -0.28171578, -0.37385955)
+bind/24/name = &"middle_upper_leg.R"
+bind/24/bone = -1
+bind/24/pose = Transform3D(0.0007859763, 0.016171917, -0.9998689, -0.9998689, 0.016182521, -0.0005242716, 0.016171921, 0.9997383, 0.016182523, 0.09214944, -0.047961444, -0.10517611)
+bind/25/name = &"middle_lower_leg.R"
+bind/25/bone = -1
+bind/25/pose = Transform3D(-0.00026243713, -0.016014675, -0.9998718, -0.9998718, -0.016008418, 0.0005188072, -0.016014675, 0.99974364, -0.016008414, 0.09531641, -0.32157752, -0.11256779)
+bind/26/name = &"rear_upper_leg.R"
+bind/26/bone = -1
+bind/26/pose = Transform3D(0.00086200493, 0.01732218, -0.9998496, -0.9998496, 0.017334513, -0.0005616034, 0.017322177, 0.99969965, 0.017334519, -0.20175834, -0.025897402, -0.100520864)
+bind/27/name = &"rear_lower_leg.R"
+bind/27/bone = -1
+bind/27/pose = Transform3D(-0.00026141916, -0.017129712, -0.9998534, -0.9998533, -0.017122712, 0.0005548541, -0.017129704, 0.9997067, -0.017122721, -0.19832434, -0.2810063, -0.117168814)
+bind/28/name = &"front_upper_leg.R"
+bind/28/bone = -1
+bind/28/pose = Transform3D(0.00082874135, 0.01682494, -0.99985814, -0.99985814, 0.016836548, -0.0005454079, 0.016824985, 0.99971664, 0.016836505, 0.26353619, -0.025588578, -0.10846838)
+bind/29/name = &"front_lower_leg.R"
+bind/29/bone = -1
+bind/29/pose = Transform3D(-0.00026128895, -0.016906213, -0.99985707, -0.99985725, -0.016899383, 0.0005470535, -0.016906219, 0.9997143, -0.016899379, 0.2668935, -0.28846592, -0.10931141)
+bind/30/name = &"middle_leg_IK.R"
+bind/30/bone = -1
+bind/30/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, 0.093814224, -0.60331404, -0.10443449)
+bind/31/name = &"middle_hand_anchor.R"
+bind/31/bone = -1
+bind/31/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, 0.09381429, -0.60331404, -0.1044345)
+bind/32/name = &"middle_thumb_1.R"
+bind/32/bone = -1
+bind/32/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.6049834, -0.115587845, -0.13070539)
+bind/33/name = &"middle_thumb_2.R"
+bind/33/bone = -1
+bind/33/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.6049834, -0.115587845, -0.056923162)
+bind/34/name = &"middle_knee.R"
+bind/34/bone = -1
+bind/34/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.52331406, -0.30892393, -0.09381425)
+bind/35/name = &"rear_leg_IK.R"
+bind/35/bone = -1
+bind/35/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, -0.20000005, -0.5452744, -0.10443449)
+bind/36/name = &"rear_hand_anchor.R"
+bind/36/bone = -1
+bind/36/pose = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, -0.20000006, -0.5452744, -0.1044345)
+bind/37/name = &"rear_thumb_1.R"
+bind/37/bone = -1
+bind/37/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.5469437, -0.115587845, 0.16310897)
+bind/38/name = &"rear_thumb_2.R"
+bind/38/bone = -1
+bind/38/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.5469437, -0.115587845, 0.2368912)
+bind/39/name = &"rear_knee.R"
+bind/39/bone = -1
+bind/39/pose = Transform3D(1, 0, 4.371139e-08, 0, 1.0000001, 0, -4.371139e-08, 0, 1, 0.4652744, -0.30892393, 0.20000003)
+bind/40/name = &"front_leg_IK.R"
+bind/40/bone = -1
+bind/40/pose = Transform3D(2.9802317e-07, -3.7252885e-08, -1, -1, -3.72529e-08, -3.5762787e-07, -3.7252885e-08, 1, -3.72529e-08, 0.26531112, -0.555427, -0.10443468)
+bind/41/name = &"front_hand_anchor.R"
+bind/41/bone = -1
+bind/41/pose = Transform3D(-4.594927e-07, 5.7436626e-08, -1, -1, 5.7436583e-08, 3.99888e-07, 5.7436612e-08, 1, 5.7436605e-08, 0.26531067, -0.55542725, -0.10443465)
+bind/42/name = &"front_thumb_1.R"
+bind/42/bone = -1
+bind/42/pose = Transform3D(1, -7.766034e-09, 5.1121816e-08, 7.766042e-09, 1.0000001, 5.7436626e-08, 8.482883e-09, -7.76607e-09, 1, 0.5616866, -0.11516963, -0.30081877)
+bind/43/name = &"front_thumb_2.R"
+bind/43/bone = -1
+bind/43/pose = Transform3D(1, -7.766034e-09, 5.1121816e-08, 7.766042e-09, 1.0000001, 5.7436626e-08, 8.482883e-09, -7.76607e-09, 1, 0.5616866, -0.11516963, -0.22980323)
+bind/44/name = &"front_knee.R"
+bind/44/bone = -1
+bind/44/pose = Transform3D(1, 3.72529e-08, 1.2566778e-07, -3.7252896e-08, 1, -1.1287752e-15, -6.606308e-08, -2.4610413e-15, 1, 0.4801567, -0.30892393, -0.2653111)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdheq"]
+render_priority = 2
+shader = ExtResource("2_sdheq")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63n0v"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_sdheq")
+shader = ExtResource("3_63n0v")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xucdu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_63n0v")
+shader = ExtResource("4_xucdu")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bn8j2"]
+render_priority = 2
+shader = ExtResource("2_sdheq")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xcrse"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_bn8j2")
+shader = ExtResource("3_63n0v")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2psf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xcrse")
+shader = ExtResource("4_xucdu")
+shader_parameter/light_dir_world = Vector3(0.5262369, 0.71882063, -0.4542815)
+
+[node name="StencilShadowDemo" type="Node3D" unique_id=147511768]
+script = ExtResource("1_63n0v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1333648791]
+transform = Transform3D(-0.63532984, -0.5651821, 0.52623683, -0.02271632, 0.6948244, 0.71882063, -0.77190673, 0.44473404, -0.45428157, 0, 2.4098282, 0)
+shadow_enabled = true
+sky_mode = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=736711314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_doufl")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=598085118]
+transform = Transform3D(-0.9306429, 0, 0.36592793, 0, 1, 0, -0.36592793, 0, -0.9306429, 0.05368793, 0.13507521, 0)
+cast_shadow = 0
+size = Vector3(6, 0.31420898, 1)
+material = SubResource("StandardMaterial3D_doufl")
+
+[node name="BeetlebotSkin" parent="." unique_id=1229489347 instance=ExtResource("2_itwmi")]
+transform = Transform3D(-0.998705, 0.0490419, -0.0135270525, 0.050290857, 0.9918504, -0.11706274, 0.0076758317, -0.11759146, -0.99303234, 0, 2.4098282, 0)
+walk_speed = 0.0
+
+[node name="Skeleton3D" parent="BeetlebotSkin/beetle_bot/Armature" index="0"]
+bones/1/position = Vector3(-0.4584, 0.026628196, 0.113887)
+bones/1/rotation = Quaternion(0, 0, 0.55000883, 0.8351588)
+bones/2/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/3/rotation = Quaternion(0.56098586, 0.56098586, 0.43045887, 0.43045887)
+bones/4/rotation = Quaternion(0.4304589, 0.4304589, 0.56098586, 0.56098586)
+bones/6/position = Vector3(-0.314593, -0.337712, 0.0044344887)
+bones/6/rotation = Quaternion(0, 0, 0.8433141, 0.537421)
+bones/7/rotation = Quaternion(-0.7071068, 3.743389e-23, 6.2803687e-16, 0.7071068)
+bones/8/rotation = Quaternion(0.56098586, 0.56098586, 0.43045887, 0.43045887)
+bones/9/rotation = Quaternion(0.4304589, 0.4304589, 0.56098586, 0.56098586)
+bones/11/position = Vector3(-0.34543, 0.2725, 0.00443466)
+bones/11/rotation = Quaternion(5.899309e-09, -2.5672694e-08, 0.5307879, 0.8475048)
+bones/12/rotation = Quaternion(-0.7071068, 3.1260288e-07, -2.2304094e-07, 0.7071068)
+bones/13/rotation = Quaternion(0.56098515, 0.56098616, 0.43045914, 0.4304591)
+bones/14/rotation = Quaternion(0.43045917, 0.4304592, 0.56098616, 0.5609852)
+bones/16/position = Vector3(0.0212553, -0.02, 0.35)
+bones/16/rotation = Quaternion(0, 0.021007007, 0, 0.99977934)
+bones/17/rotation = Quaternion(0.28240508, 0.1884611, 0.7477152, 0.5706591)
+bones/18/rotation = Quaternion(-0.6387947, -0.012378895, -0.02075179, 0.76899767)
+bones/19/rotation = Quaternion(0.12655899, 0.22149101, 0.822391, 0.5085251)
+bones/20/rotation = Quaternion(-0.7465698, -0.011454696, -0.024265392, 0.66476583)
+bones/21/rotation = Quaternion(0.22979198, 0.126869, 0.7229639, 0.6390799)
+bones/22/rotation = Quaternion(-0.7561724, -0.011030205, -0.024459615, 0.65382224)
+bones/24/rotation = Quaternion(0.24690205, -0.12834804, -0.77601314, 0.56601214)
+bones/25/rotation = Quaternion(-0.659675, 0.012091601, 0.021430101, 0.75114805)
+bones/26/rotation = Quaternion(0.100442976, -0.26342896, -0.9400119, 0.192078)
+bones/27/rotation = Quaternion(-0.73783684, 0.011621597, 0.023981493, 0.67445284)
+bones/28/rotation = Quaternion(0.41077295, -0.159636, -0.5002489, 0.7453409)
+bones/29/rotation = Quaternion(-0.7463208, 0.011219697, 0.024140991, 0.66505384)
+bones/30/position = Vector3(0.4584, 0.026628196, 0.0044344887)
+bones/30/rotation = Quaternion(0, 0, -0.55000883, 0.8351588)
+bones/31/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/32/rotation = Quaternion(0.56098586, -0.56098586, -0.43045887, 0.43045887)
+bones/33/rotation = Quaternion(0.4304589, -0.4304589, -0.56098586, 0.56098586)
+bones/35/position = Vector3(0.190873, -0.499193, 0.0044344887)
+bones/35/rotation = Quaternion(0, 0, -0.95810986, 0.2864009)
+bones/36/rotation = Quaternion(-0.7071068, 3.743389e-23, 6.2803687e-16, 0.7071068)
+bones/37/rotation = Quaternion(0.56098586, -0.56098586, -0.43045887, 0.43045887)
+bones/38/rotation = Quaternion(0.4304589, -0.4304589, -0.56098586, 0.56098586)
+bones/40/position = Vector3(0.34543, 0.433982, 0.113888)
+bones/40/rotation = Quaternion(1.2693002e-08, 2.3081903e-08, -0.278876, 0.9603272)
+bones/41/rotation = Quaternion(-0.7071068, -3.1260288e-07, 2.2304094e-07, 0.7071068)
+bones/42/rotation = Quaternion(-0.56098515, 0.56098616, 0.43045914, -0.4304591)
+bones/43/rotation = Quaternion(-0.43045917, 0.4304592, 0.56098616, -0.5609852)
+
+[node name="StencilShadow" parent="BeetlebotSkin/beetle_bot/Armature/Skeleton3D/Beetle" index="0" unique_id=1428055071 node_paths=PackedStringArray("light_source")]
+skin = SubResource("Skin_42pw4")
+surface_material_override/0 = SubResource("ShaderMaterial_xucdu")
+light_source = NodePath("../../../../../../DirectionalLight3D")
+
+[node name="BeetlebotSkin2" parent="." unique_id=2064743562 instance=ExtResource("2_itwmi")]
+transform = Transform3D(0.49999997, 0, 0, 0, 0.49999997, 0, 0, 0, 0.49999997, -1.1570001, 1.258614, -1.6575459)
+
+[node name="Skeleton3D" parent="BeetlebotSkin2/beetle_bot/Armature" index="0"]
+bones/1/position = Vector3(-0.4584, 0.026628196, 0.113887)
+bones/1/rotation = Quaternion(0, 0, 0.55000883, 0.8351588)
+bones/2/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/3/rotation = Quaternion(0.56098586, 0.56098586, 0.43045887, 0.43045887)
+bones/4/rotation = Quaternion(0.4304589, 0.4304589, 0.56098586, 0.56098586)
+bones/6/position = Vector3(-0.314593, -0.337712, 0.0044344887)
+bones/6/rotation = Quaternion(0, 0, 0.8433141, 0.537421)
+bones/7/rotation = Quaternion(-0.7071068, 3.743389e-23, 6.2803687e-16, 0.7071068)
+bones/8/rotation = Quaternion(0.56098586, 0.56098586, 0.43045887, 0.43045887)
+bones/9/rotation = Quaternion(0.4304589, 0.4304589, 0.56098586, 0.56098586)
+bones/11/position = Vector3(-0.34543, 0.2725, 0.00443466)
+bones/11/rotation = Quaternion(5.899309e-09, -2.5672694e-08, 0.5307879, 0.8475048)
+bones/12/rotation = Quaternion(-0.7071068, 3.1260288e-07, -2.2304094e-07, 0.7071068)
+bones/13/rotation = Quaternion(0.56098515, 0.56098616, 0.43045914, 0.4304591)
+bones/14/rotation = Quaternion(0.43045917, 0.4304592, 0.56098616, 0.5609852)
+bones/16/position = Vector3(0.0212553, -0.02, 0.35)
+bones/16/rotation = Quaternion(0, 0.021007007, 0, 0.99977934)
+bones/17/rotation = Quaternion(0.28240508, 0.1884611, 0.7477152, 0.5706591)
+bones/18/rotation = Quaternion(-0.6387947, -0.012378895, -0.02075179, 0.76899767)
+bones/19/rotation = Quaternion(0.12655899, 0.22149101, 0.822391, 0.5085251)
+bones/20/rotation = Quaternion(-0.7465698, -0.011454696, -0.024265392, 0.66476583)
+bones/21/rotation = Quaternion(0.22979198, 0.126869, 0.7229639, 0.6390799)
+bones/22/rotation = Quaternion(-0.7561724, -0.011030205, -0.024459615, 0.65382224)
+bones/24/rotation = Quaternion(0.24690205, -0.12834804, -0.77601314, 0.56601214)
+bones/25/rotation = Quaternion(-0.659675, 0.012091601, 0.021430101, 0.75114805)
+bones/26/rotation = Quaternion(0.100442976, -0.26342896, -0.9400119, 0.192078)
+bones/27/rotation = Quaternion(-0.73783684, 0.011621597, 0.023981493, 0.67445284)
+bones/28/rotation = Quaternion(0.41077295, -0.159636, -0.5002489, 0.7453409)
+bones/29/rotation = Quaternion(-0.7463208, 0.011219697, 0.024140991, 0.66505384)
+bones/30/position = Vector3(0.4584, 0.026628196, 0.0044344887)
+bones/30/rotation = Quaternion(0, 0, -0.55000883, 0.8351588)
+bones/31/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/32/rotation = Quaternion(0.56098586, -0.56098586, -0.43045887, 0.43045887)
+bones/33/rotation = Quaternion(0.4304589, -0.4304589, -0.56098586, 0.56098586)
+bones/35/position = Vector3(0.190873, -0.499193, 0.0044344887)
+bones/35/rotation = Quaternion(0, 0, -0.95810986, 0.2864009)
+bones/36/rotation = Quaternion(-0.7071068, 3.743389e-23, 6.2803687e-16, 0.7071068)
+bones/37/rotation = Quaternion(0.56098586, -0.56098586, -0.43045887, 0.43045887)
+bones/38/rotation = Quaternion(0.4304589, -0.4304589, -0.56098586, 0.56098586)
+bones/40/position = Vector3(0.34543, 0.433982, 0.113888)
+bones/40/rotation = Quaternion(1.2693002e-08, 2.3081903e-08, -0.278876, 0.9603272)
+bones/41/rotation = Quaternion(-0.7071068, -3.1260288e-07, 2.2304094e-07, 0.7071068)
+bones/42/rotation = Quaternion(-0.56098515, 0.56098616, 0.43045914, -0.4304591)
+bones/43/rotation = Quaternion(-0.43045917, 0.4304592, 0.56098616, -0.5609852)
+
+[node name="Beetle" parent="BeetlebotSkin2/beetle_bot/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, -1.4901161e-08, 1, -2.6077032e-08, 0, -3.7252903e-09, 1, -0.024082541, -0.059538603, -0.23910224)
+
+[node name="StencilShadow" parent="BeetlebotSkin2/beetle_bot/Armature/Skeleton3D/Beetle" index="0" unique_id=1428055071 node_paths=PackedStringArray("light_source")]
+skin = SubResource("Skin_42pw4")
+surface_material_override/0 = SubResource("ShaderMaterial_x2psf")
+light_source = NodePath("../../../../../../DirectionalLight3D")
+
+[editable path="BeetlebotSkin"]
+[editable path="BeetlebotSkin/beetle_bot"]
+[editable path="BeetlebotSkin2"]
+[editable path="BeetlebotSkin2/beetle_bot"]

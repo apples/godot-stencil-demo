@@ -3,7 +3,7 @@
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix,unshaded,cull_back,depth_test_disabled;
-stencil_mode read,compare_not_equal,1;
+stencil_mode read,compare_not_equal,100;
 uniform vec4 albedo : source_color;
 uniform float frensel_power;
 

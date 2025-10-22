@@ -11,9 +11,9 @@ fractal_gain = 0.885
 fractal_weighted_strength = 0.25
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lcyc"]
-seamless = true
-color_ramp = SubResource("Gradient_g1mw2")
 noise = SubResource("FastNoiseLite_1fiy0")
+color_ramp = SubResource("Gradient_g1mw2")
+seamless = true
 
 [resource]
 resource_name = "FlameColorMaterial"

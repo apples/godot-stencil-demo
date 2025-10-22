@@ -8,8 +8,8 @@ height = 2.0
 radial_segments = 8
 rings = 4
 
-[node name="WindwakerLight" type="Node3D"]
+[node name="WindwakerLight" type="Node3D" unique_id=1206088119]
 script = ExtResource("2_sdbqp")
 
-[node name="Light" type="MeshInstance3D" parent="."]
+[node name="Light" type="MeshInstance3D" parent="." unique_id=884356658]
 mesh = SubResource("SphereMesh_44fpo")

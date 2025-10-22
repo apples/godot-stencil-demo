@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dy17axvkay47c"]
+[gd_scene load_steps=24 format=3 uid="uid://dy17axvkay47c"]
 
 [ext_resource type="PackedScene" uid="uid://mqkabw1dauvn" path="res://models/campfire/campfire.glb" id="1_kvmle"]
 [ext_resource type="Script" uid="uid://bkw3h6s4mij1e" path="res://camp/camp.gd" id="1_sneqp"]
+[ext_resource type="Script" uid="uid://dgx6pjl1e2tr0" path="res://camp/firefly.gd" id="3_ngery"]
+[ext_resource type="Script" uid="uid://b1j7hvebe7ft4" path="res://windwaker_light/windwaker_light.gd" id="4_v854t"]
+[ext_resource type="Shader" uid="uid://d181b84uk8exn" path="res://windwaker_light/windwaker_color.gdshader" id="6_u2wnn"]
+[ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_light/windwaker_mask.gdshader" id="7_phv36"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_31t3n"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -20,6 +24,12 @@ sky = SubResource("Sky_uxssq")
 ambient_light_source = 2
 ambient_light_color = Color(0.19136304, 0.2501668, 0.38983026, 1)
 glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 0.0
+fog_depth_end = 20.0
 
 [sub_resource type="Gradient" id="Gradient_gd5l7"]
 offsets = PackedFloat32Array(0.04682274, 0.61204016)
@@ -29,9 +39,9 @@ colors = PackedColorArray(0.0036561699, 0.1375807, 0, 1, 0.23808642, 0.38165453,
 frequency = 0.1227
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jg0xm"]
-seamless = true
-color_ramp = SubResource("Gradient_gd5l7")
 noise = SubResource("FastNoiseLite_f078g")
+color_ramp = SubResource("Gradient_gd5l7")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdrra"]
 albedo_texture = SubResource("NoiseTexture2D_jg0xm")
@@ -41,36 +51,82 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_61a7b"]
 material = SubResource("StandardMaterial3D_bdrra")
 
-[node name="Camp" type="Node3D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpmyg"]
+render_priority = 12
+shader = ExtResource("6_u2wnn")
+shader_parameter/color = Color(2.1074393, 1.7376883, 0.885654, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngery"]
+render_priority = 11
+next_pass = SubResource("ShaderMaterial_kpmyg")
+shader = ExtResource("7_phv36")
+
+[sub_resource type="SphereMesh" id="SphereMesh_44fpo"]
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc1d2"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.988235)
+
+[sub_resource type="SphereMesh" id="SphereMesh_elt3m"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Gradient" id="Gradient_fc1d2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_elt3m"]
+gradient = SubResource("Gradient_fc1d2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qoos8"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.81078887, 0.70248914, 0, 0.08627451)
+albedo_texture = SubResource("GradientTexture2D_elt3m")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_o7aac"]
+material = SubResource("StandardMaterial3D_qoos8")
+
+[node name="Camp" type="Node3D" unique_id=2018848439]
 script = ExtResource("1_sneqp")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1900545951]
 environment = SubResource("Environment_5wocg")
 
-[node name="MoonLight" type="DirectionalLight3D" parent="."]
+[node name="MoonLight" type="DirectionalLight3D" parent="." unique_id=346845969]
 transform = Transform3D(1, 0, 0, 0, 0.93319833, 0.35936174, 0, -0.35936174, 0.93319833, 0, 0, 0)
 light_color = Color(1, 0.8008572, 0.7879502, 1)
 sky_mode = 2
 
-[node name="CameraGimbal" type="Marker3D" parent="."]
+[node name="CameraGimbal" type="Marker3D" parent="." unique_id=1232602421]
 transform = Transform3D(-0.12186912, 0, 0.9925462, 0, 1, 0, -0.9925462, 0, -0.12186912, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraGimbal"]
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal" unique_id=170478730]
 transform = Transform3D(1, 0, 0, 0, 0.99844074, 0.055821504, 0, -0.055821504, 0.99844074, 0, 2.0221334, 4.54062)
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1470327007]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_61a7b")
 
-[node name="campfire" parent="." instance=ExtResource("1_kvmle")]
+[node name="campfire" parent="." unique_id=1349937658 instance=ExtResource("1_kvmle")]
 
-[node name="CampfireLight" type="OmniLight3D" parent="."]
+[node name="CampfireLight" type="OmniLight3D" parent="." unique_id=353097213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73805153, 0)
 light_color = Color(1, 0.69803923, 0.21568626, 1)
 light_energy = 7.141
 shadow_enabled = true
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=805896072]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +134,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="UI" unique_id=958488926]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -92,3 +148,22 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_font_sizes/font_size = 24
 text = "C - Return"
+
+[node name="Firefly" type="Node3D" parent="." unique_id=1806704820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4350092, 0.40018737, -2.2418187)
+script = ExtResource("3_ngery")
+
+[node name="WindwakerLight" type="Node3D" parent="Firefly" unique_id=93632321]
+script = ExtResource("4_v854t")
+
+[node name="Light" type="MeshInstance3D" parent="Firefly/WindwakerLight" unique_id=2131909896]
+material_override = SubResource("ShaderMaterial_ngery")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_44fpo")
+
+[node name="Center" type="MeshInstance3D" parent="Firefly" unique_id=957222613]
+material_override = SubResource("StandardMaterial3D_fc1d2")
+mesh = SubResource("SphereMesh_elt3m")
+
+[node name="Glow" type="MeshInstance3D" parent="Firefly" unique_id=1512010335]
+mesh = SubResource("QuadMesh_o7aac")

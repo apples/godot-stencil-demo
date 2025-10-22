@@ -7,19 +7,19 @@
 [ext_resource type="Material" uid="uid://h2e57pyy6lu4" path="res://models/beetle_bot/materials/beetlebot_lights_mat.tres" id="4_4158y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hds25"]
-render_priority = 1
+render_priority = 51
 shader = ExtResource("3_mk501")
 shader_parameter/albedo = Color(0, 1, 1, 1)
 shader_parameter/frensel_power = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xv6ly"]
+render_priority = 50
 next_pass = SubResource("ShaderMaterial_hds25")
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 3
 stencil_flags = 2
-stencil_compare = 0
-stencil_reference = 1
+stencil_reference = 100
 
 [sub_resource type="Animation" id="Animation_j0ypl"]
 resource_name = "RESET"
@@ -437,10 +437,10 @@ _data = {
 &"walk": SubResource("Animation_gd1qa")
 }
 
-[node name="BeetlebotSkin" type="Node3D"]
+[node name="BeetlebotSkin" type="Node3D" unique_id=1229489347]
 script = ExtResource("1_gujli")
 
-[node name="beetle_bot" parent="." instance=ExtResource("1_r7amh")]
+[node name="beetle_bot" parent="." unique_id=935802363 instance=ExtResource("1_r7amh")]
 
 [node name="Skeleton3D" parent="beetle_bot/Armature" index="0"]
 bones/1/position = Vector3(-0.4584, -0.0539163, 0.130461)

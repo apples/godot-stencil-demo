@@ -11,7 +11,7 @@ var _time: float = 0.0
 @onready var campfire_light: OmniLight3D = $CampfireLight
 
 func _ready() -> void:
-	for i in 50:
+	for i in 0:
 		var r = randf() * 50.0 + 3.0
 		var v = Vector2.from_angle(randf() * TAU)
 		var n = FIREFLY.instantiate()

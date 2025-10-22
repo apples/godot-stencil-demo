@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdtp6mwiobm0y"]
+
+[ext_resource type="Script" uid="uid://b66fngp3ovvy2" path="res://benchmark/benchmark.gd" id="1_rngpm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rngpm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qedq"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pl4w"]
+shading_mode = 0
+albedo_color = Color(1, 0, 1, 1)
+stencil_mode = 3
+stencil_flags = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f2ro"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.5019608)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+
+[sub_resource type="SystemFont" id="SystemFont_rngpm"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rngpm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qedq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pl4w"]
+
+[node name="Benchmark" type="Node3D"]
+script = ExtResource("1_rngpm")
+duration_sec = 2.0
+mesh = SubResource("SphereMesh_rngpm")
+opaque_nostencil_material = SubResource("StandardMaterial3D_1qedq")
+opaque_stencil_material = SubResource("StandardMaterial3D_5pl4w")
+transparent_stencil_material = SubResource("StandardMaterial3D_1f2ro")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.772115)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_readonly_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("SystemFont_rngpm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rngpm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qedq")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_5pl4w")
+editable = false

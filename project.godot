@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="StencilDemo"
-run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://jt8pq117ee6j"
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -21,8 +21,8 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="/home/apples/Repos/godot-stencil-demo/test.avi"
+movie_writer/mjpeg_quality=1.0
 
 [filesystem]
 
@@ -38,7 +38,7 @@ camp={
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 driver/depth_prepass/enable=false
 anti_aliasing/quality/msaa_3d=3
-scaling_3d/mode=2
 environment/defaults/default_clear_color=Color(0.439216, 0.439216, 0.439216, 0)
