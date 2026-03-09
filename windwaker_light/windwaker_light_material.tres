@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b6dbnskt7saxl"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b6dbnskt7saxl"]
 
 [ext_resource type="Shader" uid="uid://d181b84uk8exn" path="res://windwaker_light/windwaker_color.gdshader" id="2_prwmi"]
 [ext_resource type="Shader" uid="uid://dm01dnurb0my8" path="res://windwaker_light/windwaker_mask.gdshader" id="3_nf555"]

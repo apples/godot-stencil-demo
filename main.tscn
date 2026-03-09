@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://jt8pq117ee6j"]
+[gd_scene format=3 uid="uid://jt8pq117ee6j"]
 
 [ext_resource type="Script" uid="uid://do2n4bndyuucs" path="res://main.gd" id="1_mty62"]
 [ext_resource type="Script" uid="uid://d0tobr6muqwqo" path="res://wind_waker_light_swing.gd" id="1_oxoqy"]
@@ -152,7 +152,6 @@ omni_attenuation = 0.00656953
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509487, 0)
 material_override = SubResource("StandardMaterial3D_j1orv")
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule" unique_id=619635984]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.466471, 0)
@@ -163,7 +162,6 @@ text = "XRay"
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -1, 0.509487, 5.9604645e-08)
 material_override = SubResource("StandardMaterial3D_7yt5r")
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule2" unique_id=425240650]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
@@ -174,7 +172,6 @@ text = "Outline"
 transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 1, 0.509487, -8.940697e-08)
 material_override = SubResource("StandardMaterial3D_3qskv")
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays/Capsule3" unique_id=457147269]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
@@ -199,7 +196,6 @@ transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 0, 0.509
 material_override = SubResource("StandardMaterial3D_j1orv")
 transparency = 0.5
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule" unique_id=1552965129]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.466471, 0)
@@ -211,7 +207,6 @@ transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, -1, 0.50
 material_override = SubResource("StandardMaterial3D_7yt5r")
 transparency = 0.5
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule2" unique_id=980374357]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)
@@ -223,7 +218,6 @@ transform = Transform3D(0.516712, 0, 0, 0, 0.516712, 0, 0, 0, 0.516712, 1, 0.509
 material_override = SubResource("StandardMaterial3D_3qskv")
 transparency = 0.5
 mesh = SubResource("CapsuleMesh_a50aj")
-skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="Demos/OutlinesAndXrays2/Capsule3" unique_id=364984637]
 transform = Transform3D(1.935314, 0, 0, 0, 1.935314, 0, 0, 0, 1.935314, 0, 1.4660256, 0)

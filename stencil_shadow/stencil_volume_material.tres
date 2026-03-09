@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://db2ldefe1afo3"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://db2ldefe1afo3"]
 
 [ext_resource type="Shader" uid="uid://cfrfgbri4ldr8" path="res://stencil_shadow/shadow_volume_color.gdshader" id="1_kurvx"]
 [ext_resource type="Shader" uid="uid://0sykc8ignx30" path="res://stencil_shadow/shadow_volume_front.gdshader" id="2_watkc"]
